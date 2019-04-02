@@ -1,0 +1,133 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+<div id="rosterBuilder">
+    <ul>
+        <li v-for="champion in champions" :key="champion.id">{{ champion.name }}</li>
+    </ul>
+</div>
+
+<script>
+    var champData = {
+        "champions": [
+            { 
+                "id": 1,
+                "name": "ooo",
+                "class": "science",
+                "tier": 1,
+                "abilities": {
+                    "canReduceBleed": false,
+                    "canReducePoison": false,
+                    "canReduceShock": false,
+                    "canReduceIncinerate": false,
+                    "canReduceColdsnap": false,
+                    "canReduceDebuffs": false,
+                    "canReduceHealing": false,
+                    "canReduceEvade": false,
+                    "canReduceAbilityAccuracy": false,
+                    "canReducePowerGain": false,
+                    "canReduceBuffs": false,
+                    "canBreakArmor": false,
+                    "canSurviveSP3": false,
+                    "hasBuffs": false,
+                    "hasDebuffs": false,
+                    "hasTrueStrike": false,
+                    "hasHealing": false
+                },
+                "recommendations": {
+                    "targetRankFourStar": 3,
+                    "targetRankFiveStar": 2,
+                    "isWorthClassAwakeningGem": false,
+                    "isWorthGenericAwakeningGem": false,
+                    "needsAwakening": false,
+                    "needsHighSignature": false
+                },
+                "synergies": [
+                    {
+                        "synergyPartner": "wolverine",
+                        "isSignificant": false
+                    },
+                    {
+                        "synergyPartner": "blade",
+                        "isSignificant": true
+                    }
+                ],
+                "tags": [
+                    "hero",
+                    "avenger",
+                    "xs"
+                ]
+            },
+            { 
+                "id": 2,
+                "name": "bbb",
+                "class": "mystic",
+                "tier": 3,
+                "abilities": {
+                    "canReduceBleed": false,
+                    "canReducePoison": false,
+                    "canReduceShock": false,
+                    "canReduceIncinerate": false,
+                    "canReduceColdsnap": false,
+                    "canReduceDebuffs": false,
+                    "canReduceHealing": false,
+                    "canReduceEvade": false,
+                    "canReduceAbilityAccuracy": false,
+                    "canReducePowerGain": false,
+                    "canReduceBuffs": false,
+                    "canBreakArmor": false,
+                    "canSurviveSP3": false,
+                    "hasBuffs": false,
+                    "hasDebuffs": false,
+                    "hasTrueStrike": false,
+                    "hasHealing": false
+                },
+                "recommendations": {
+                    "targetRankFourStar": 1,
+                    "targetRankFiveStar": 1,
+                    "isWorthClassAwakeningGem": false,
+                    "isWorthGenericAwakeningGem": false,
+                    "needsAwakening": false,
+                    "needsHighSignature": false
+                },
+                "synergies": [
+                    {
+                        "synergyPartner": "wolverine",
+                        "isSignificant": false
+                    },
+                    {
+                        "synergyPartner": "blade",
+                        "isSignificant": true
+                    }
+                ],
+                "tags": [
+                    "hero",
+                    "avenger",
+                    "xs"
+                ]
+            }
+        ]
+    }
+
+    var vm = new Vue({
+        el: '#rosterBuilder',
+        data: champData,
+        methods: {
+            filterChamps: function () {
+                // function here
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
