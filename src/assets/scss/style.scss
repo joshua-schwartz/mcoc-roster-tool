@@ -66,3 +66,12 @@ header {
         border-left-color: $mystic-purple;
     }
 }
+
+details ul {
+    padding-top: 0.5rem;
+    list-style-type: none;
+    display: inline-block;
+    width: 40%;
+    margin-right: 5%;
+    vertical-align: top;
+}
