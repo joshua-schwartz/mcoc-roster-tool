@@ -1980,7 +1980,7 @@ var champData = {
    "hasHealing": false
 },
 "tags": [
-       "thanos’s army",
+       "thanos's army",
 ], "size": "m"
 },
 {
@@ -2123,7 +2123,7 @@ var champData = {
    "hasHealing": false
 },
 "tags": [
-       "thanos’s army",
+       "thanos's army",
 ], "size": "s"
 },
 {
@@ -4085,7 +4085,7 @@ var vm = new Vue({
        },
        computed: {
               champTags() {
-                     return _.uniq(_.flatten(_.map(champData.champions, 'tags')));
+                     return _.uniq(_.flatten(_.map(champData.champions, 'tags'))).sort();
               },
               filteredChamps() {
                      return getBySize(
