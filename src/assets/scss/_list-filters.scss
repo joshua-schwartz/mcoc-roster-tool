@@ -1,0 +1,21 @@
+.filters li,
+.filter-options li {
+    list-style: none;
+}
+
+.filter-item {
+    @include list-item(#555);
+}
+
+.filter-options  {
+    padding-left: 15px;
+
+    li {
+        margin-top: 0.5em;
+        font-size: 13px;
+
+        label {
+            text-transform: capitalize;
+        }
+    }
+}

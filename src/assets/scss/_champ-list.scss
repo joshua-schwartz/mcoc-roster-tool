@@ -1,0 +1,42 @@
+.champion-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.champion-item {
+    @include list-item(#ffae35);
+
+    &.science {
+        @include list-item($science-green);
+    }
+
+    &.skill {
+        @include list-item($skill-red);
+    }
+
+    &.mutant {
+        @include list-item($mutant-yellow);
+    }
+
+    &.cosmic {
+        @include list-item($cosmic-cyan);
+    }
+
+    &.tech {
+        @include list-item($tech-blue);
+    }
+
+    &.mystic {
+        @include list-item($mystic-purple);
+    }
+}
+
+.champion-details,
+.champion-abilities {
+    padding-top: 0.5rem;
+    list-style-type: none;
+    display: inline-block;
+    width: 40%;
+    margin-right: 5%;
+    vertical-align: top;
+}

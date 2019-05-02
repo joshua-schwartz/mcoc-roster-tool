@@ -4016,6 +4016,26 @@ var champData = {
     ]
 }
 
+function getByTag(champsList, selectedTags) {
+       if (!selectedTags.length) return champsList
+       return _.filter(champsList, selectedTags)
+}
+
+function getByClass(champsList, selectedClasses) {
+       if (!selectedClasses.length) return champsList
+       return _.filter(champsList, selectedClasses)
+}
+
+function getBySize(champsList, selectedSizes) {
+       if (!selectedSizes.length) return champsList
+       return _.filter(champsList, selectedSizes)
+}
+
+function getByTier(champsList, selectedTiers) {
+       if (!selectedTiers.length) return champsList
+       return _.filter(champsList, selectedTiers)
+}
+
 Vue.component('champion-item', {
   props: ['champion'],
   template: 
@@ -4037,10 +4057,44 @@ Vue.component('champion-item', {
 
 var vm = new Vue({
     el: '#app',
-    data: champData,
-    methods: {
-        filterChamps: function () {
-            // function here
-        }
-    }
+    data: {
+       champsList: champData,
+       champClasses: [
+              { id: 1, value: 'science' },
+              { id: 2, value: 'skill' },
+              { id: 3, value: 'mutant' },
+              { id: 4, value: 'tech' },
+              { id: 5, value: 'cosmic' },
+              { id: 6, value: 'mystic' }
+       ],
+       champSizes: [
+              { id: 1, value: 's' },
+              { id: 2, value: 'm' },
+              { id: 3, value: 'l' },
+              { id: 4, value: 'xl' }
+       ],
+       champTiers: [
+              { id: 1, value: 1 },
+              { id: 2, value: 2 },
+              { id: 3, value: 3 }
+       ],
+       selectedTags: [],
+       selectedClasses: [],
+       selectedSizes: [],
+       selectedTiers: []
+       },
+       computed: {
+              champTags() {
+                     return _.uniq(_.flatten(_.map(champData.champions, 'tags')));
+              },
+              filteredChamps() {
+                     return getBySize(
+                                   getByTier(
+                                          getByClass(
+                                                 getByTag(this.champsList, this.selectedTags), 
+                                          this.selectedClasses), 
+                                   this.selectedTiers), 
+                            this.selectedSizes);
+              }
+       }
 });

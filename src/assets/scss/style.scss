@@ -6,6 +6,20 @@ $tech-blue: #1d2ad7;
 $mystic-purple: #6a22b5;
 $text-gray: #353535;
 
+@mixin list-item($color) {
+    display: block;
+    padding: .5rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.85rem;
+    box-shadow: 2px 2px 2px #f3f2f2;
+    border: 1px solid #dcdcdc;
+    border-left: 0.5rem solid $color;
+
+    summary:focus {
+        outline: none;
+    }
+}
+
 html {
     font-size: 16px;
 
@@ -15,10 +29,12 @@ html {
         box-sizing: border-box;
     }
 }
+
 body {
     font-family: 'Roboto', sans-serif;
     color: $text-gray;
 }
+
 header {
     padding: 1rem;
     text-align: center;
@@ -28,50 +44,6 @@ header {
         text-transform: uppercase;
     }
 }
-.champion-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-.champion-item {
-    display: block;
-    padding: .5rem;
-    margin-bottom: 0.25rem;
-    font-size: 0.85rem;
-    box-shadow: 2px 2px 2px #f3f2f2;
-    border: 1px solid #dcdcdc;
-    border-left: 0.5rem solid #333;
 
-    &.science {
-        border-left-color: $science-green;
-    }
-
-    &.skill {
-        border-left-color: $skill-red;
-    }
-
-    &.mutant {
-        border-left-color: $mutant-yellow;
-    }
-
-    &.cosmic {
-        border-left-color: $cosmic-cyan;
-    }
-
-    &.tech {
-        border-left-color: $tech-blue;
-    }
-
-    &.mystic {
-        border-left-color: $mystic-purple;
-    }
-}
-
-details ul {
-    padding-top: 0.5rem;
-    list-style-type: none;
-    display: inline-block;
-    width: 40%;
-    margin-right: 5%;
-    vertical-align: top;
-}
+@import 'champ-list';
+@import 'list-filters';

@@ -14,36 +14,57 @@
 <div id="app" class="container">
    <div class="row">
       <aside class="filter-sidebar col-3">
-         <ul class="filter">
-            <li class="filter-title">
-               Class
+         <ul class="filters">
+            <li>
+               <details class="filter-item">
+                  <summary>Class</summary>
+                  <ul class="filter-options">
+                     <li v-for="champClass in champClasses">
+                        <input type="checkbox" :id="champClass.value" :value="champClass.id"  v-model="selectedClasses" />
+                        <label :for="champClass.value">{{champClass.value}}</label>
+                     </li>
+                  </ul>
+               </details>
             </li>
             <li>
-               <ul class="filter-options">
-                  <li>Science</li>
-                  <li>Skill</li>
-                  <li>Mutant</li>
-                  <li>Cosmic</li>
-                  <li>Tech</li>
-                  <li>Mystic</li>
-               </ul>
-            </li>
-         </ul>
-         <ul class="filter">
-            <li class="filter-title">
-               Tags
+               <details class="filter-item">
+                  <summary>Tags</summary>
+                  <ul class="filter-options">
+                     <li v-for="tag in champTags">
+                        <input type="checkbox" :id="tag" :value="tag"  v-model="selectedTags" />
+                        <label :for="tag">{{tag}}</label>
+                     </li>
+                  </ul>
+               </details>
             </li>
             <li>
-               <ul class="filter-options">
-                  <li></li>
-               </ul>
+               <details class="filter-item">
+                  <summary>Size</summary>
+                  <ul class="filter-options">
+                     <li v-for="size in champSizes">
+                        <input type="checkbox" :id="size.id" :value="size.id"  v-model="selectedSizes" />
+                        <label :for="size.id">{{size.value}}</label>
+                     </li>
+                  </ul>
+               </details>
+            </li>
+            <li>
+               <details class="filter-item">
+                  <summary>Tier</summary>
+                  <ul class="filter-options">
+                     <li v-for="tier in champTiers">
+                        <input type="checkbox" :id="tier.id" :value="tier.id"  v-model="selectedTiers" />
+                        <label :for="tier.id">{{tier.value}}</label>
+                     </li>
+                  </ul>
+               </details>
             </li>
          </ul>
       </aside>
       <main class="col-9">
          <div class="champion-list">
             <champion-item 
-               v-for="champion in champions" 
+               v-for="champion in champsList.champions" 
                :key="champion.id"
                :class="champion.class"
                :champion="champion">
@@ -53,6 +74,7 @@
    </div>
 </div>
 
+<script src="./bower_components/lodash/dist/lodash.min.js" type="text/javascript"></script>
 <script src="./site.min.js" type="text/javascript"></script>
 
 </body>
