@@ -7286,13 +7286,16 @@
 		"oAP": "/build/build",
 		"oF": 0
 		},
-	"/champ-data.json": {
-		"ft": 524288,
-		"oA": 1,
-		"oAP": "/build/champ-data-min.json",
-		"oF": 0,
-		"oO": 0,
-		"oS": 1
+	"/champ-data.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/build/champ-data.min.js",
+		"oF": 2,
+		"sC": 3,
+		"tS": 0
 		},
 	"/src/assets/js/site.js": {
 		"bF": 0,
