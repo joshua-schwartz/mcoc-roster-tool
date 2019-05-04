@@ -20,26 +20,9 @@ Vue.component('champion-item', {
 var vm = new Vue({
     el: '#app',
     data: {
-       champsList: champData,
-       champClasses: [
-              { id: 1, value: 'science' },
-              { id: 2, value: 'skill' },
-              { id: 3, value: 'mutant' },
-              { id: 4, value: 'tech' },
-              { id: 5, value: 'cosmic' },
-              { id: 6, value: 'mystic' }
-       ],
-       champSizes: [
-              { id: 1, value: 's' },
-              { id: 2, value: 'm' },
-              { id: 3, value: 'l' },
-              { id: 4, value: 'xl' }
-       ],
-       champTiers: [
-              { id: 1, value: 1 },
-              { id: 2, value: 2 },
-              { id: 3, value: 3 }
-       ],
+       champClasses: ['science','skill','mutant','tech','cosmic','mystic'],
+       champSizes: ['s','m','l','xl'],
+       champTiers: [1,2,3],
        selectedTags: [],
        selectedClasses: [],
        selectedSizes: [],
@@ -47,50 +30,46 @@ var vm = new Vue({
        },
        computed: {
               champTags() {
-                     return _.uniq(_.flatten(_.map(this.champsList, 'tags'))).sort();
+                     return _.uniq(_.flatten(_.map(champData, 'tags'))).sort();
               },
-              filteredChamps() {
-                     return getBySize(
-                                   getByTier(
-                                          getByClass(
-                                                 getByTag(this.champsList, this.selectedTags), 
-                                          this.selectedClasses), 
-                                   this.selectedTiers), 
-                            this.selectedSizes);
+              getFilteredChamps() {
+                     return this.getBySize(
+                            this.getByTier(
+                                   this.getByClass(
+                                          this.getByTag(champData, this.selectedTags), 
+                                   this.selectedClasses), 
+                            this.selectedTiers), 
+                     this.selectedSizes);
               }
        },
        methods: {
               getByClass: function (champsList, selectedClasses) {
                      if (!selectedClasses.length) return champsList
-                     return _.filter(champsList, selectedClasses)
+                     
+                     return champsList.filter(function (e) {
+                            return this.indexOf(e) < 0;
+                     }, selectedClasses)
               },
               getByTag: function (champsList, selectedTags) {
                      if (!selectedTags.length) return champsList
-                     return _.filter(champsList, selectedTags)
+
+                     return champsList.filter(function (e) {
+                            return this.indexOf(e) < 0;
+                     }, selectedTags)
               },
               getBySize: function (champsList, selectedSizes) {
                      if (!selectedSizes.length) return champsList
-                     return _.filter(champsList, selectedSizes)
+
+                     return champsList.filter(function (e) {
+                            return this.indexOf(e) < 0;
+                     }, selectedSizes)
               },
               getByTier: function (champsList, selectedTiers) {
                      if (!selectedTiers.length) return champsList
-                     return _.filter(champsList, selectedTiers)
-              },
-              updateClasses: function () {
-                     console.log('update classes');
-                     this.selectedClasses = '';
-              },
-              updateTags: function () {
-                     console.log('update tags');
-                     this.selectedTags = '';
-              },
-              updateSizes: function () {
-                     console.log('update sizes');
-                     this.selectedSizes = '';
-              },
-              updateTiers: function () {
-                     console.log('update tiers');
-                     this.selectedTiers = '';
+
+                     return champsList.filter(function (e) {
+                            return this.indexOf(e) < 0;
+                     }, selectedTiers)
               }
        }
 });

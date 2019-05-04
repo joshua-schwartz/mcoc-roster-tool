@@ -16,61 +16,57 @@
       <aside class="filter-sidebar col-3">
          <ul class="filters">
             <li>
-               <details class="filter-item">
+               <details class="filter-item" data-class-filter>
                   <summary>Class</summary>
                   <ul class="filter-options">
                      <li v-for="champClass in champClasses">
                         <input   type="checkbox" 
-                                 :id="champClass.value" 
-                                 :value="champClass.id"  
-                                 v-model="selectedClasses"
-                                 @change="updateClasses" />
-                        <label   :for="champClass.value">{{champClass.value}}</label>
+                                 :id="champClass" 
+                                 :value="champClass"  
+                                 v-model="selectedClasses" />
+                        <label   :for="champClass">{{champClass}}</label>
                      </li>
                   </ul>
                </details>
             </li>
             <li>
-               <details class="filter-item">
+               <details class="filter-item" data-tag-filter>
                   <summary>Tags</summary>
                   <ul class="filter-options">
                      <li v-for="tag in champTags">
                         <input   type="checkbox" 
                                  :id="tag" 
                                  :value="tag"  
-                                 v-model="selectedTags"
-                                 @change="updateTags" />
+                                 v-model="selectedTags" />
                         <label   :for="tag">{{tag}}</label>
                      </li>
                   </ul>
                </details>
             </li>
             <li>
-               <details class="filter-item">
+               <details class="filter-item" data-size-filter>
                   <summary>Size</summary>
                   <ul class="filter-options">
                      <li v-for="size in champSizes">
                         <input   type="checkbox" 
-                                 :id="size.id" 
-                                 :value="size.id" 
-                                 v-model="selectedSizes"
-                                 @change="updateSizes" />
-                        <label   :for="size.id">{{size.value}}</label>
+                                 :id="size" 
+                                 :value="size" 
+                                 v-model="selectedSizes" />
+                        <label   :for="size">{{size}}</label>
                      </li>
                   </ul>
                </details>
             </li>
             <li>
-               <details class="filter-item">
+               <details class="filter-item" data-tier-filter>
                   <summary>Tier</summary>
                   <ul class="filter-options">
                      <li v-for="tier in champTiers">
                         <input   type="checkbox" 
-                                 :id="tier.id" 
-                                 :value="tier.id" 
-                                 v-model="selectedTiers"
-                                 @change="updateTiers" />
-                        <label   :for="tier.id">{{tier.value}}</label>
+                                 :id="tier" 
+                                 :value="tier" 
+                                 v-model="selectedTiers" />
+                        <label   :for="tier">{{tier}}</label>
                      </li>
                   </ul>
                </details>
@@ -80,7 +76,7 @@
       <main class="col-9">
          <div class="champion-list">
             <champion-item 
-               v-for="champion in champsList" 
+               v-for="champion in getFilteredChamps" 
                :key="champion.id"
                :class="champion.class"
                :champion="champion">
