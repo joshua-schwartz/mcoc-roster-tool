@@ -46,30 +46,54 @@ var vm = new Vue({
               getByClass: function (champsList, selectedClasses) {
                      if (!selectedClasses.length) return champsList
                      
-                     return champsList.filter(function (e) {
-                            return this.indexOf(e) < 0;
-                     }, selectedClasses)
+                     var fullList = [];
+
+                     selectedClasses.forEach(item => {
+                            var singleFilterList = _.filter(_.clone(champsList), ['class', item]);
+                            
+                            fullList = _.concat(fullList, singleFilterList);
+                     });
+                     
+                     return fullList;
               },
               getByTag: function (champsList, selectedTags) {
                      if (!selectedTags.length) return champsList
 
-                     return champsList.filter(function (e) {
-                            return this.indexOf(e) < 0;
-                     }, selectedTags)
+                     var fullList = [];
+
+                     selectedTags.forEach(item => {
+                            var singleFilterList = _.filter(_.clone(champsList), ['tags', item]);
+                            
+                            fullList = _.concat(fullList, singleFilterList);
+                     });
+                     
+                     return fullList;
               },
               getBySize: function (champsList, selectedSizes) {
                      if (!selectedSizes.length) return champsList
 
-                     return champsList.filter(function (e) {
-                            return this.indexOf(e) < 0;
-                     }, selectedSizes)
+                     var fullList = [];
+
+                     selectedSizes.forEach(item => {
+                            var singleFilterList = _.filter(_.clone(champsList), ['size', item]);
+                            
+                            fullList = _.concat(fullList, singleFilterList);
+                     });
+                     
+                     return fullList;
               },
               getByTier: function (champsList, selectedTiers) {
                      if (!selectedTiers.length) return champsList
 
-                     return champsList.filter(function (e) {
-                            return this.indexOf(e) < 0;
-                     }, selectedTiers)
+                     var fullList = [];
+
+                     selectedTiers.forEach(item => {
+                            var singleFilterList = _.filter(_.clone(champsList), ['tier', item]);
+                            
+                            fullList = _.concat(fullList, singleFilterList);
+                     });
+                     
+                     return fullList;
               }
        }
 });
