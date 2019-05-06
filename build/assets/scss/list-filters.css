@@ -1,0 +1,6 @@
+.filter-options li {
+  list-style: none;
+  margin-top: 0.5em;
+  font-size: 13px; }
+  .filter-options li label {
+    text-transform: capitalize; }

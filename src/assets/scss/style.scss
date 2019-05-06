@@ -1,0 +1,60 @@
+$science-green: #068918;
+$skill-red: #cc1615;
+$mutant-yellow: #eeb612;
+$cosmic-cyan: #2693b8;
+$tech-blue: #1d2ad7;
+$mystic-purple: #6a22b5;
+$text-gray: #353535;
+
+@mixin list-item($color) {
+    display: block;
+    padding: .5rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.85rem;
+    box-shadow: 2px 2px 2px #f3f2f2;
+    border: 1px solid #dcdcdc;
+    border-left: 0.5rem solid $color;
+
+    summary {
+        
+        cursor: pointer;
+        
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+html {
+    font-size: 16px;
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: $text-gray;
+}
+
+header {
+    padding: 1rem;
+    text-align: center;
+
+    h1 {
+        font-size: 2rem;
+        text-transform: uppercase;
+        text-decoration: underline;
+        margin-bottom: 10px;
+    }
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+@import 'champ-list';
+@import 'list-filters';
