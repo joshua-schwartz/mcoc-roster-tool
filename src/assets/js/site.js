@@ -59,15 +59,23 @@ var vm = new Vue({
               getByTag: function (champsList, selectedTags) {
                      if (!selectedTags.length) return champsList
 
-                     var fullList = [];
-
-                     selectedTags.forEach(item => {
-                            var singleFilterList = _.filter(_.clone(champsList), ['tags', item]);
+                     var unfilteredList = _.clone(champsList);
+                     var tagFilteredList = [];
                             
-                            fullList = _.concat(fullList, singleFilterList);
+                     unfilteredList.forEach(champ => {
+                            
+                            var champTags = champ.tags;
+
+                            var hasTag = champTags.some(tag => {
+                                   return _.indexOf(selectedTags, tag) !== -1
+                            });
+
+                            if (hasTag) {
+                                   tagFilteredList.push(champ);
+                            }
                      });
                      
-                     return fullList;
+                     return tagFilteredList;
               },
               getBySize: function (champsList, selectedSizes) {
                      if (!selectedSizes.length) return champsList
