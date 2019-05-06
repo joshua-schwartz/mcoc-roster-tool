@@ -15,8 +15,13 @@ $text-gray: #353535;
     border: 1px solid #dcdcdc;
     border-left: 0.5rem solid $color;
 
-    summary:focus {
-        outline: none;
+    summary {
+        
+        cursor: pointer;
+        
+        &:focus {
+            outline: none;
+        }
     }
 }
 
