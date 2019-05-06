@@ -42,7 +42,13 @@ header {
     h1 {
         font-size: 2rem;
         text-transform: uppercase;
+        text-decoration: underline;
+        margin-bottom: 10px;
     }
+}
+
+h2 {
+    margin-bottom: 20px;
 }
 
 @import 'champ-list';
