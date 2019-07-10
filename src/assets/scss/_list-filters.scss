@@ -1,21 +1,44 @@
+.filters {
+    padding: 0;
+    margin: 0;
+}
+
 .filters li,
 .filter-options li {
     list-style: none;
 }
 
 .filter-item {
-    @include list-item(#555);
+    @include list-item(#797979);
+    margin-right: 0;
+
+    summary {
+        cursor: pointer;
+        outline: none;
+    }
 }
 
-.filter-options  {
-    padding-left: 15px;
+.filter-options {
+    padding-left: 10px;
 
     li {
         margin-top: 0.5em;
-        font-size: 13px;
+        font-size: 16px;
+
+        @media screen and (max-width: 767px) {
+            font-size: 14px;
+        }
 
         label {
             text-transform: capitalize;
+            margin-left: 5px;
+            position: relative;
+            top: 1px;
+
+            @media screen and (max-width: 767px) {
+                margin-left: 3px;
+                top: -2px;
+            }
         }
     }
 }

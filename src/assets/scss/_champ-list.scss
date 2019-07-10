@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
 }
+
 .champion-item {
     @include list-item(#ffae35);
 
@@ -29,14 +30,4 @@
     &.mystic {
         @include list-item($mystic-purple);
     }
-}
-
-.champion-details,
-.champion-abilities {
-    padding-top: 0.5rem;
-    list-style-type: none;
-    display: inline-block;
-    width: 40%;
-    margin-right: 5%;
-    vertical-align: top;
 }

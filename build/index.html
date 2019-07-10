@@ -1,95 +1,126 @@
 <html>
+
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="./bower_components/bootstrap/dist/css/bootstrap-grid.min.css" rel="stylesheet">
-    <link href="./style.min.css" rel="stylesheet">
+   <meta name="viewport"
+         content="width=device-width, initial-scale=1.0">
+   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+   <link href="https://fonts.googleapis.com/css?family=Roboto"
+         rel="stylesheet">
+   <link href="./bower_components/bootstrap/dist/css/bootstrap-grid.min.css"
+         rel="stylesheet">
+   <link href="./style.min.css"
+         rel="stylesheet">
 </head>
+
 <body>
 
-<header>
-   <h1>MCOC Roster Tool</h1>
-</header>
+   <header>
+      <h1>MCOC Roster Tool</h1>
+   </header>
 
-<div id="app" class="container">
-   <div class="row">
-      <aside class="filter-sidebar col-3">
-         <h2>Filter By:</h2>
-         <ul class="filters">
-            <li>
-               <details class="filter-item" data-class-filter>
-                  <summary>Class</summary>
-                  <ul class="filter-options">
-                     <li v-for="champClass in champClasses">
-                        <input   type="checkbox" 
-                                 :id="champClass" 
-                                 :value="champClass"  
-                                 v-model="selectedClasses" />
-                        <label   :for="champClass">{{champClass}}</label>
-                     </li>
-                  </ul>
-               </details>
-            </li>
-            <li>
-               <details class="filter-item" data-tag-filter>
-                  <summary>Tags</summary>
-                  <ul class="filter-options">
-                     <li v-for="tag in champTags">
-                        <input   type="checkbox" 
-                                 :id="tag" 
-                                 :value="tag"  
-                                 v-model="selectedTags" />
-                        <label   :for="tag">{{tag}}</label>
-                     </li>
-                  </ul>
-               </details>
-            </li>
-            <li>
-               <details class="filter-item" data-size-filter>
-                  <summary>Size</summary>
-                  <ul class="filter-options">
-                     <li v-for="size in champSizes">
-                        <input   type="checkbox" 
-                                 :id="size" 
-                                 :value="size" 
-                                 v-model="selectedSizes" />
-                        <label   :for="size">{{size}}</label>
-                     </li>
-                  </ul>
-               </details>
-            </li>
-            <li>
-               <details class="filter-item" data-tier-filter>
-                  <summary>Tier</summary>
-                  <ul class="filter-options">
-                     <li v-for="tier in champTiers">
-                        <input   type="checkbox" 
-                                 :id="tier" 
-                                 :value="tier" 
-                                 v-model="selectedTiers" />
-                        <label   :for="tier">{{tier}}</label>
-                     </li>
-                  </ul>
-               </details>
-            </li>
-         </ul>
-      </aside>
-      <main class="col-9">
-         <h2>Champions:</h2>
-         <div class="champion-list">
-            <champion-item 
-               v-for="champion in getFilteredChamps" 
-               :key="champion.id"
-               :class="champion.class"
-               :champion="champion">
-            </champion-item>
-         </ul>
-      </main>
+   <div id="app"
+        class="container">
+      <div class="row">
+         <aside class="filter-sidebar col-12 col-md-4">
+            <h2>Filter By:</h2>
+            <ul class="filters">
+               <li>
+                  <details class="filter-item"
+                           data-class-filter>
+                     <summary>Class</summary>
+                     <ul class="filter-options">
+                        <li v-for="champClass in champClasses">
+                           <input type="checkbox"
+                                  :id="champClass"
+                                  :value="champClass"
+                                  v-model="selectedClasses" />
+                           <label :for="champClass">{{champClass}}</label>
+                        </li>
+                     </ul>
+                  </details>
+               </li>
+               <li>
+                  <details class="filter-item"
+                           data-tag-filter>
+                     <summary>Tags</summary>
+                     <ul class="filter-options">
+                        <li v-for="tag in champTags">
+                           <input type="checkbox"
+                                  :id="tag"
+                                  :value="tag"
+                                  v-model="selectedTags" />
+                           <label :for="tag">{{tag}}</label>
+                        </li>
+                     </ul>
+                  </details>
+               </li>
+               <li>
+                  <details class="filter-item"
+                           data-size-filter>
+                     <summary>Size</summary>
+                     <ul class="filter-options">
+                        <li v-for="size in champSizes">
+                           <input type="checkbox"
+                                  :id="size"
+                                  :value="size"
+                                  v-model="selectedSizes" />
+                           <label :for="size">{{size}}</label>
+                        </li>
+                     </ul>
+                  </details>
+               </li>
+               <li>
+                  <details class="filter-item"
+                           data-tier-filter>
+                     <summary>Tier</summary>
+                     <ul class="filter-options">
+                        <li v-for="tier in champTiers">
+                           <input type="checkbox"
+                                  :id="tier"
+                                  :value="tier"
+                                  v-model="selectedTiers" />
+                           <label :for="tier">{{tier}}</label>
+                        </li>
+                     </ul>
+                  </details>
+               </li>
+               <li>
+                  <details class="filter-item"
+                           data-ability-filter>
+                     <summary>Abilities</summary>
+                     <ul class="filter-options">
+                        <li v-for="ability in champAbilities">
+                           <input type="checkbox"
+                                  :id="ability.id"
+                                  :value="ability.id"
+                                  v-model="selectedAbilities" />
+                           <label :for="ability.id">{{ability.label}}</label>
+                        </li>
+                     </ul>
+                  </details>
+               </li>
+            </ul>
+         </aside>
+         <main class="col-12 col-md-8">
+            <h2>Champions:</h2>
+            <div class="champion-list row">
+               <champion-item v-for="champion in getFilteredChamps"
+                              :key="champion.id"
+                              :class="champion.class"
+                              :champion="champion"
+                              class="col-md-5 col-12">
+               </champion-item>
+               </ul>
+         </main>
+      </div>
    </div>
-</div>
 
-<script src="./bower_components/lodash/dist/lodash.min.js" type="text/javascript"></script>
-<script src="./champ-data.min.js" type="text/javascript"></script>
-<script src="./site.min.js" type="text/javascript"></script>
+   <script src="./bower_components/lodash/dist/lodash.min.js"
+           type="text/javascript"></script>
+   <script src="./champ-data.min.js"
+           type="text/javascript"></script>
+   <script src="./site.min.js"
+           type="text/javascript"></script>
 </body>
+
 </html>

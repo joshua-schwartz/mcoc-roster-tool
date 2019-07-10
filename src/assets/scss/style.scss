@@ -1,59 +1,55 @@
-$science-green: #068918;
-$skill-red: #cc1615;
-$mutant-yellow: #eeb612;
-$cosmic-cyan: #2693b8;
-$tech-blue: #1d2ad7;
-$mystic-purple: #6a22b5;
+$science-green: #549e4e;
+$skill-red: #d25656;
+$mutant-yellow: #f7cd53;
+$cosmic-cyan: #48a2bf;
+$tech-blue: #5c65d6;
+$mystic-purple: #9763cc;
 $text-gray: #353535;
 
 @mixin list-item($color) {
     display: block;
-    padding: .5rem;
-    margin-bottom: 0.25rem;
-    font-size: 0.85rem;
-    box-shadow: 2px 2px 2px #f3f2f2;
-    border: 1px solid #dcdcdc;
-    border-left: 0.5rem solid $color;
-
-    summary {
-        
-        cursor: pointer;
-        
-        &:focus {
-            outline: none;
-        }
-    }
-}
-
-html {
+    padding: 12px;
+    margin-bottom: 16px;
+    margin-right: 32px;
     font-size: 16px;
+    border: 1px solid $color;
+    border-left: 10px solid $color;
+    border-radius: 3px;
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+    @media screen and (max-width: 767px) {
+        margin-bottom: 10px;
+        margin-right: 0;
+        padding: 8px;
+        font-size: 14px;
     }
 }
 
 body {
     font-family: 'Roboto', sans-serif;
     color: $text-gray;
+    margin: 0;
 }
 
 header {
-    padding: 1rem;
+    padding: 16px;
     text-align: center;
+    background-color: #333;
 
     h1 {
-        font-size: 2rem;
+        font-size: 24px;
         text-transform: uppercase;
-        text-decoration: underline;
-        margin-bottom: 10px;
+        margin: 0;
+        color: #fff;
     }
 }
 
 h2 {
     margin-bottom: 20px;
+
+    @media screen and (max-width: 767px) {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
 }
 
 @import 'champ-list';
